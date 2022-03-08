@@ -3,6 +3,7 @@
 const age = 18;
 const loggedIn = 5;
 const check = (age >= 20) ? "you are adult" : age ? "true" : "false";
+
 const access = loggedIn >= 5;
 console.log(access);
 console.log(check);
@@ -130,11 +131,16 @@ console.log(connectToGirls);
 //problem : 11 <-------ES6 spread operator------->
 const digit = [10, 12, 15, 14,18, 20, 30];
 const split = [...digit, + 40];
-split.pop();
-const add = split.filter((currentValue, index, arr) =>{
-
+let initialCurrent = 0;
+const add = split.filter((currentValue)=>{
+  if(currentValue >10){
+    initialCurrent = initialCurrent + currentValue;
+    return initialCurrent;
+  }
 })
+console.log(initialCurrent);
 
+ 
 //problem : 12 <-------empty arrow  fn------->
 const num1 = ()=> 9;
 console.log(num1())
@@ -189,5 +195,63 @@ const myFunction = (calculate = 20) =>calculate + 20;
 console.log(myFunction());
 
 //problem : 20 <-------optional chaining------->
+const bottle = {
+  name : "bottle",
+  color: "navy",
+  price: 60,
+  contain: "water",
+  passingYear: {
+    one: 1980,
+    two: 1990,
+    three: 2000,
+    four: {
+       totalContainingWater : "an ocean of water",
+    },
+  },
+}
+const accessToBottle  = bottle?.passingYear?.three?.four;
+console.log(accessToBottle)
 
-const 
+//problem : 20 <-------js map------->
+const serialNum = [2, 30, 10, 40, 20, 21, 13];
+// const serialNumMap = serialNum.map(element=> element * 2)
+// const serialNumForEach = serialNum.forEach(e=>console.log(e));
+const serialNumFilter = serialNum.filter(e=>{
+  if(e%2 !== 0){
+    // console.log(e+2)
+  }
+  else{
+    // console.log(e)
+  }
+})
+// console.log(getCalc)
+
+//problem : 20 <-------js find------->
+const myNum = [30, 22, 15, 14, 16, 10, 8];
+const findOut = myNum.find(n=> (n>10))
+console.log(findOut)
+
+//problem : 21 <-------js find------->
+const newObject = {
+  name : "loverStore",
+  location : "dhaka",
+  products : ["rice", "RC", "sugar", "banana", "coconut", "salt"],
+  dailyProfit : 2000,
+  monthlySalesReport : {
+    dayOne : 9000,
+    dayTwo : 12000,
+    dayThree : 7000,
+    dayFour : 1000,
+  },
+}
+// const output1 = Object.keys(newObject);
+// const output2 = Object.values(newObject);
+// const output3 = Object.entries(newObject.monthlySalesReport);
+// console.log(output1,output2,output3);
+
+//for in object
+for(const prop in newObject){
+  console.log(prop);
+}
+
+
